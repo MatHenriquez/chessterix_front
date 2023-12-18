@@ -1,5 +1,12 @@
 {
+  "ts-node": {
+    "compilerOptions": {
+      "module": "es2015",
+      "moduleResolution": "node"
+    }
+  },
   "compilerOptions": {
+    "baseUrl": "./app",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -20,7 +27,8 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "types": ["cypress"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
