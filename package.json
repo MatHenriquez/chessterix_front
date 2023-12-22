@@ -12,6 +12,16 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run"
   },
+  "lint-staged": {
+    "src/**/*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "data/**/*.ts": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
   "dependencies": {
     "next": "14.0.4",
     "react": "^18",
