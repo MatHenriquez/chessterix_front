@@ -8,10 +8,25 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
+      colors: {
+        kimono: {
+          '200': '#A04741',
+          '700': '#914B43',
+          '900': '#873D3A',
+          '950': '#612F32'
+        },
+        red: {
+          main: '#6E0000'
+        },
+        bone: {
+          '500': '#988D87'
+        }
+      },
+      fontFamily: {
+        stranger: ['var(--font-stranger)', 'sans-serif']
+      },
+      fontSize: {
+        title: '10rem'
       }
     }
   },
