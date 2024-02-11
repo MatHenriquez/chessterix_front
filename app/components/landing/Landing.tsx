@@ -13,7 +13,7 @@ export default function Landing() {
             <SignInButton />
             <SignUpButton />
           </div>
-          <a href="" className='text-rose-700 underline bg-white p-1 rounded border-2 border-bone-500' data-cy="guest-link">Continue as a guest</a>
+          <GuestLink />
         </div>
       </div>
     </section>
@@ -53,4 +53,8 @@ const SignUpButton = () => (
   >
     Sing Up
   </a>
+);
+
+const GuestLink = () => (
+  <a href="" className='text-rose-700 underline bg-white p-1 rounded border-2 border-bone-500' data-cy="guest-link">Continue as a guest</a>
 );
