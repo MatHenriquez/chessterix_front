@@ -39,8 +39,5 @@ jobs:
     - name: Run tests and then close the server
       run: npm start &
 
-    - name: Sleep for 20 seconds
-      run: sleep 20
-
     - name: Test
       run: npm run cypress:run
