@@ -36,8 +36,5 @@ jobs:
     - name: Build
       run: npm run build
 
-    - name: Run 
-      run: npm start
-
-    - name: Test
-      run: npm run cypress:run
+    - name: Run tests and then close the server
+      run: npm start && npm run cypress:run
