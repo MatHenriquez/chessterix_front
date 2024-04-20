@@ -6,12 +6,12 @@ describe('Landing Page', () => {
 
   it('should display the title', () => {
     cy.visit('/');
-    cy.get('[data-cy=landing-title]').should('exist').should('have.text', "Let's playIf you dare...");
+    cy.get('[data-cy=landing-title]').should('exist').should('have.text', "Welcome to");
   });
 
   it('should display the welcome message', () => {
     cy.visit('/');
-    cy.get('[data-cy=welcome-message]').should('exist').should('have.text', 'Welcome to Chessterix');
+    cy.get('[data-cy=welcome-message]').should('exist').should('have.text', 'Chessterix');
   });
 
   it('should display the sign in button', () => {
