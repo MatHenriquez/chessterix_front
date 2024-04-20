@@ -7,7 +7,7 @@ export default function Landing() {
       data-cy="landing-container"
     >
       <div
-        className="grid grid-rows-12 h-screen justify-items-center max-w-xl text-center mx-auto mb-44 ltr:sm:text-left rtl:sm:text-right"
+        className="grid grid-rows-12 h-screen justify-items-center max-w-xl text-center mx-auto mb-44"
         data-cy="landing-content"
       >
         <div className="row-span-4 place-content-center">
@@ -29,20 +29,21 @@ export default function Landing() {
   );
 }
 
-const Title = () => (
-  <h2 className="text-8xl leading-none mb-24 shadow-xl rounded shadow-red-200/25" data-cy="landing-title">
-    <strong className="block font-extrabold text-6xl mt-12">Welcome to</strong>
-  </h2>
-);
-
 const Message = () => (
   <>
-    <Title />
     <p
-      className="max-w-lg inline-block align-middle h-36 py-2 px-12 rounded-md lg:mb-8 lg:mt-0 text-9xl lg:text-title font-stranger bg-red-100/75 shadow-lg shadow-red-200/75 font-extrabold text-rose-700"
+      className="max-w-lg inline-block align-middle py-2 px-12 rounded-md lg:mb-8 lg:mt-0 text-9xl lg:text-title font-stranger shadow-inner shadow-bone-500/50 bg-red-950/10 h-fit font-extrabold text-white"
+      style={{
+        textShadow: '2px 2px 2px rgba(255, 255, 255, 0.3)',
+        padding: '10px'
+      }}
       data-cy="welcome-message"
     >
-      Chessterix
+      Welcome to <span className='text-kimono-200' style={{
+        WebkitTextStroke: '1px black',
+        textShadow: '5px 5px 5px rgba(255, 0, 0, 0.3)',
+        padding: '10px'
+      }}>Chessterix</span>
     </p>
   </>
 );
