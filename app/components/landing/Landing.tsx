@@ -10,7 +10,7 @@ export default function Landing() {
         className="grid grid-rows-12 h-screen justify-items-center max-w-xl text-center mx-auto mb-44"
         data-cy="landing-content"
       >
-        <div className="row-span-4 place-content-center">
+        <div className="row-span-2 md:row-span-4 place-content-center">
           <Message />
         </div>
         <div className="grid grid-cols-2 grid-rows-12 gap-x-6">
