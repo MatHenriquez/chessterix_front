@@ -13,7 +13,7 @@ export default function Landing() {
         <div className="row-span-2 md:row-span-4 place-content-center">
           <Message />
         </div>
-        <div className="grid grid-cols-2 grid-rows-12 gap-x-6">
+        <div className="flex flex-col w-80 md:w-96 gap-y-4 md:grid md:grid-cols-2 grid-rows-12 gap-x-6">
           <div className="col-span-1">
             <SignInButton />
           </div>
