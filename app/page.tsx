@@ -1,6 +1,15 @@
-import React from 'react';
-import Landing from './components/landing/Landing';
+'use client';
+
+import React, { useState } from 'react';
+import Landing from './landing/Landing';
 
 export default function Home() {
-  return <Landing />;
+  const [showLoginModal, setShowLoginModal] = useState(false);
+
+  return (
+    <Landing
+      showLoginModal={showLoginModal}
+      setShowLoginModal={setShowLoginModal}
+    />
+  );
 }
