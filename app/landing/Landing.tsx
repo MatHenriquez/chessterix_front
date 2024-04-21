@@ -1,11 +1,20 @@
-import React from 'react';
+import React, { FC } from 'react';
+import SignInButton from '../sign-in/SignInButton';
+import SignInModal from '../sign-in/SignInModal';
 
-export default function Landing() {
+const Landing: FC<{
+  showLoginModal: boolean;
+  setShowLoginModal: (value: boolean) => void;
+}> = ({ showLoginModal, setShowLoginModal }) => {
   return (
     <section
       className="bg-[url(/image/anime-2.jpg)] bg-cover bg-center bg-no-repeat h-screen"
       data-cy="landing-container"
     >
+      <SignInModal
+        showLoginModal={showLoginModal}
+        setShowLoginModal={setShowLoginModal}
+      />
       <div
         className="grid grid-rows-12 h-screen justify-items-center max-w-xl text-center mx-auto mb-44"
         data-cy="landing-content"
@@ -15,7 +24,10 @@ export default function Landing() {
         </div>
         <div className="flex flex-col w-80 md:w-96 gap-y-4 md:grid md:grid-cols-2 grid-rows-12 gap-x-6">
           <div className="col-span-1">
-            <SignInButton />
+            <SignInButton
+              showLoginModal={showLoginModal}
+              setShowLoginModal={setShowLoginModal}
+            />
           </div>
           <div className="col-span-1">
             <SignUpButton />
@@ -27,7 +39,7 @@ export default function Landing() {
       </div>
     </section>
   );
-}
+};
 
 const Message = () => (
   <>
@@ -39,29 +51,25 @@ const Message = () => (
       }}
       data-cy="welcome-message"
     >
-      Welcome to <span className='text-kimono-200' style={{
-        WebkitTextStroke: '1px black',
-        textShadow: '5px 5px 5px rgba(255, 0, 0, 0.3)',
-        padding: '10px'
-      }}>Chessterix</span>
+      Welcome to{' '}
+      <span
+        className="text-kimono-200"
+        style={{
+          WebkitTextStroke: '1px black',
+          textShadow: '5px 5px 5px rgba(255, 0, 0, 0.3)',
+          padding: '10px'
+        }}
+      >
+        Chessterix
+      </span>
     </p>
   </>
-);
-
-const SignInButton = () => (
-  <a
-    href="#"
-    className="block w-full rounded text-sm lg:text-lg bg-red-main px-12 py-3 font-medium text-white shadow-lg hover:bg-kimono-200 focus:outline-none focus:ring active:bg-kimono-700 sm:w-auto shadow-red-50/75"
-    data-cy="sign-in-button"
-  >
-    Sing In
-  </a>
 );
 
 const SignUpButton = () => (
   <a
     href="#"
-    className="block w-full rounded bg-white px-12 py-3 text-sm lg:text-lg font-medium text-kimono-200 shadow-lg shadow-red-50/75 hover:text-red-main hover:bg-bone-500 focus:outline-none focus:ring active:text-kimono-700 sm:w-auto"
+    className="block w-full rounded text-xl bg-white px-12 py-3 lg:text-lg font-medium text-kimono-200 shadow-lg shadow-red-50/75 hover:text-red-main hover:bg-bone-500 focus:outline-none focus:ring active:text-kimono-700 sm:w-auto"
     data-cy="sign-up-button"
   >
     Sing Up
@@ -77,3 +85,5 @@ const GuestLink = () => (
     Continue as a guest
   </a>
 );
+
+export default Landing;
