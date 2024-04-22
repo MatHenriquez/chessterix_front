@@ -59,7 +59,7 @@ export const SignInForm = () => {
                   }}
                   data-cy="email-input"
                 />
-                <div style={{ width: '300px' }}>
+                <div style={{ width: '300px', minHeight: '50px' }}>
                   <ErrorMessage
                     name="email"
                     component="div"
