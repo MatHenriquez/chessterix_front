@@ -9,7 +9,6 @@ interface SignInFormValues {
 export const SignInForm = () => {
   const initialValues: SignInFormValues = { email: '', password: '' };
 
-  
   const validate = (values: SignInFormValues) => {
     const errors: Partial<SignInFormValues> = {};
 
@@ -29,7 +28,7 @@ export const SignInForm = () => {
   };
 
   return (
-    <div className="w-fit ml-6">
+    <div className="w-fit">
       <h2 className="text-4xl mb-4 ml-4">Here again?</h2>
       <span className="text-2xl mb-4 ml-4">Mmm... Ok, be my guest</span>
       <div className="border-b-2 mt-2"></div>
@@ -46,10 +45,7 @@ export const SignInForm = () => {
           <Form className="flex flex-col w-fit">
             <div className="flex flex-col md:flex-row ml-4 md:ml-0">
               <div className="flex flex-col md:mx-8">
-                <label
-                  htmlFor="email"
-                  className="md:my-0 underline"
-                >
+                <label htmlFor="email" className="md:my-0 underline">
                   Email
                 </label>
                 <Field
@@ -63,13 +59,16 @@ export const SignInForm = () => {
                   }}
                   data-cy="email-input"
                 />
-                <ErrorMessage name="email" component="div" data-cy="email-error" />
+                <div style={{ width: '300px', minHeight: '50px' }}>
+                  <ErrorMessage
+                    name="email"
+                    component="div"
+                    data-cy="email-error"
+                  />
+                </div>
               </div>
               <div className="flex flex-col md:mx-8">
-                <label
-                  htmlFor="password"
-                  className="md:my-0 underline"
-                >
+                <label htmlFor="password" className="md:my-0 underline">
                   Password
                 </label>
                 <Field
@@ -83,7 +82,13 @@ export const SignInForm = () => {
                   className="text-red-700 px-2 border-2 mt-2 border-red-800 focus:border-red-500 focus:border-3 focus: outline-none"
                   data-cy="password-input"
                 />
-                <ErrorMessage name="password" component="div" data-cy="password-error" />
+                <div style={{ width: '300px', minHeight: '50px' }}>
+                  <ErrorMessage
+                    name="password"
+                    component="div"
+                    data-cy="password-error"
+                  />
+                </div>
               </div>
             </div>
             <div className="flex w-full justify-center">
