@@ -64,7 +64,9 @@ describe('Landing Page', () => {
       cy.get('[data-cy=login-modal]').should('exist');
       cy.get('[data-cy=email-input]').type('invalid-email');
       cy.get('[data-cy=submit-login]').click();
-      cy.get('[data-cy=email-error]').should('exist').should('have.text', '*Invalid email address');
+      cy.get('[data-cy=email-error]')
+        .should('exist')
+        .should('have.text', '*Invalid email address');
     });
 
     it('should display an error message when submitting an invalid password', () => {
@@ -73,7 +75,9 @@ describe('Landing Page', () => {
       cy.get('[data-cy=login-modal]').should('exist');
       cy.get('[data-cy=password-input]').type('123');
       cy.get('[data-cy=submit-login]').click();
-      cy.get('[data-cy=password-error]').should('exist').should('have.text', '*Password must be at least 8 characters');
+      cy.get('[data-cy=password-error]')
+        .should('exist')
+        .should('have.text', '*Password must be at least 8 characters');
     });
 
     it('should not display an error message when submitting a valid form', () => {
@@ -83,6 +87,66 @@ describe('Landing Page', () => {
       cy.get('[data-cy=email-input]').type('mail@mail.com');
       cy.get('[data-cy=password-input]').type('password123');
       cy.get('[data-cy=submit-login]').click();
+    });
+  });
+
+  describe('Sign Up', () => {
+    it('should open the sign up modal when clicking the sign up button', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+    });
+
+    it('should close the sign up modal when clicking the close button', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+      cy.get('[data-cy=close-sign-up-modal]').click();
+      cy.get('[data-cy=sign-up-modal]').should('not.exist');
+    });
+
+    it('should display an error message when submitting an empty form', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+      cy.get('[data-cy=submit-sign-up]').click();
+      cy.get('[data-cy=password-error]').should('exist');
+      cy.get('[data-cy=email-error]').should('exist');
+      cy.get('[data-cy=repeat-password-error]').should('exist');
+    });
+
+    it('should display an error message when submitting an invalid email', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+      cy.get('[data-cy=email-input]').type('invalid-email');
+      cy.get('[data-cy=submit-sign-up]').click();
+      cy.get('[data-cy=email-error]')
+        .should('exist')
+        .should('have.text', '*Invalid email address');
+    });
+
+    it('should display an error message when submitting an invalid password', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+      cy.get('[data-cy=password-input]').type('123');
+      cy.get('[data-cy=submit-sign-up]').click();
+      cy.get('[data-cy=password-error]')
+        .should('exist')
+        .should('have.text', '*Password must be at least 8 characters');
+    });
+
+    it('should display an error message when the passwords do not match', () => {
+      cy.visit('/');
+      cy.get('[data-cy=sign-up-button]').click();
+      cy.get('[data-cy=sign-up-modal]').should('exist');
+      cy.get('[data-cy=password-input]').type('password123');
+      cy.get('[data-cy=repeat-password-input]').type('password1234');
+      cy.get('[data-cy=submit-sign-up]').click();
+      cy.get('[data-cy=repeat-password-error]')
+        .should('exist')
+        .should('have.text', '*Passwords do not match');
     });
   });
 });
