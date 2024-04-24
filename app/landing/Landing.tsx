@@ -1,11 +1,10 @@
-import React, { FC } from 'react';
-import SignInButton from '../sign-in/SignInButton';
-import SignInModal from '../sign-in/SignInModal';
+import React from 'react';
+import SignInButton from '@/sign-in/SignInButton';
+import SignInModal from '@/sign-in/SignInModal';
+import SignUpButton from '@/sign-up/SignUpButton';
+import SignUpModal from '@/sign-up/SignUpModal';
 
-const Landing: FC<{
-  showLoginModal: boolean;
-  setShowLoginModal: (value: boolean) => void;
-}> = ({ showLoginModal, setShowLoginModal }) => {
+const Landing = ({ showLoginModal, setShowLoginModal, showSignUpModal, setShowSignUpModal }: props) => {
   return (
     <section
       className="bg-[url(/image/anime-2.jpg)] bg-cover bg-center bg-no-repeat h-screen"
@@ -14,6 +13,10 @@ const Landing: FC<{
       <SignInModal
         showLoginModal={showLoginModal}
         setShowLoginModal={setShowLoginModal}
+      />
+      <SignUpModal
+        showSignUpModal={showSignUpModal}
+        setShowSignUpModal={setShowSignUpModal}
       />
       <div
         className="grid grid-rows-12 h-screen justify-items-center max-w-xl text-center mx-auto mb-44"
@@ -30,7 +33,10 @@ const Landing: FC<{
             />
           </div>
           <div className="col-span-1">
-            <SignUpButton />
+            <SignUpButton
+              showSignUpModal={showSignUpModal}
+              setShowSignUpModal={setShowSignUpModal}
+             />
           </div>
           <div className="col-span-2">
             <GuestLink />
@@ -66,16 +72,6 @@ const Message = () => (
   </>
 );
 
-const SignUpButton = () => (
-  <a
-    href="#"
-    className="block w-full rounded text-xl bg-white px-12 py-3 lg:text-lg font-medium text-kimono-200 shadow-lg shadow-red-50/75 hover:text-red-main hover:bg-bone-500 focus:outline-none focus:ring active:text-kimono-700 sm:w-auto"
-    data-cy="sign-up-button"
-  >
-    Sing Up
-  </a>
-);
-
 const GuestLink = () => (
   <a
     href=""
@@ -85,5 +81,12 @@ const GuestLink = () => (
     Continue as a guest
   </a>
 );
+
+type props = {
+  showLoginModal: boolean;
+  setShowLoginModal: (value: boolean) => void;
+  showSignUpModal: boolean;
+  setShowSignUpModal: (value: boolean) => void;
+};
 
 export default Landing;
