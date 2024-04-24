@@ -1,16 +1,17 @@
 import * as React from 'react';
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 
-interface SignInFormValues {
+interface SignUpFormValues {
   email: string;
   password: string;
+  repeatPassword: string;
 }
 
-const SignInForm = () => {
-  const initialValues: SignInFormValues = { email: '', password: '' };
+export const SignUpForm = () => {
+  const initialValues: SignUpFormValues = { email: '', password: '', repeatPassword: ''};
 
-  const validate = (values: SignInFormValues) => {
-    const errors: Partial<SignInFormValues> = {};
+  const validate = (values: SignUpFormValues) => {
+    const errors: Partial<SignUpFormValues> = {};
 
     if (!values.email) {
       errors.email = '*Required';
@@ -24,13 +25,19 @@ const SignInForm = () => {
       errors.password = '*Password must be at least 8 characters';
     }
 
+    if (!values.repeatPassword) {
+      errors.repeatPassword = '*Required';
+    } else if (values.password !== values.repeatPassword) {
+      errors.repeatPassword = '*Passwords do not match';
+    }
+
     return errors;
   };
 
   return (
     <div className="w-fit">
-      <h2 className="text-4xl mb-4 ml-4">Here again?</h2>
-      <span className="text-2xl mb-4 ml-4">Mmm... Ok, be my guest</span>
+      <h2 className="text-4xl mb-4 ml-4">Go ahead...</h2>
+      <span className="text-2xl mb-4 ml-4 pl-32">if you dare</span>
       <div className="border-b-2 mt-2"></div>
       <br />
       <Formik
@@ -67,6 +74,7 @@ const SignInForm = () => {
                   />
                 </div>
               </div>
+              <div>
               <div className="flex flex-col md:mx-8">
                 <label htmlFor="password" className="md:my-0 underline">
                   Password
@@ -90,14 +98,38 @@ const SignInForm = () => {
                   />
                 </div>
               </div>
+              <div className="flex flex-col md:mx-8">
+                <label htmlFor="repeatPassword" className="md:my-0 underline">
+                  Repeat password
+                </label>
+                <Field
+                  id="repeatPassword"
+                  name="repeatPassword"
+                  placeholder="********"
+                  type="password"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+                    handleChange(e);
+                  }}
+                  className="text-red-700 px-2 border-2 mt-2 border-red-800 focus:border-red-500 focus:border-3 focus: outline-none"
+                  data-cy="repeat-password-input"
+                />
+                <div style={{ width: '300px', minHeight: '50px' }}>
+                  <ErrorMessage
+                    name="repeatPassword"
+                    component="div"
+                    data-cy="repeat-password-error"
+                  />
+                </div>
+              </div>
+              </div>
             </div>
             <div className="flex w-full justify-center">
               <button
                 type="submit"
                 className="border-2 bg-kimono-200/80 shadow-lg shadow-bone-500 border-white rounded px-8 py-2 mt-8 hover:shadow-white hover:bg-red-400"
-                data-cy="submit-login"
+                data-cy="submit-sign-up"
               >
-                Login
+                Register
               </button>
             </div>
           </Form>
@@ -106,5 +138,3 @@ const SignInForm = () => {
     </div>
   );
 };
-
-export default SignInForm;
