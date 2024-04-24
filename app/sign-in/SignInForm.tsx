@@ -6,7 +6,7 @@ interface SignInFormValues {
   password: string;
 }
 
-export const SignInForm = () => {
+const SignInForm = () => {
   const initialValues: SignInFormValues = { email: '', password: '' };
 
   const validate = (values: SignInFormValues) => {
@@ -106,3 +106,5 @@ export const SignInForm = () => {
     </div>
   );
 };
+
+export default SignInForm;

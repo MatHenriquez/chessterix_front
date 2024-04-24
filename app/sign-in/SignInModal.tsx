@@ -1,5 +1,5 @@
 import React from 'react';
-import { SignInForm } from './SignInForm';
+import SignInForm from './SignInForm';
 
 const SignInModal = ({ showLoginModal, setShowLoginModal }: props) => {
   return (
