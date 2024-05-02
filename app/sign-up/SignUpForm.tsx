@@ -22,7 +22,7 @@ export const SignUpForm = () => {
     repeatPassword: ''
   };
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const signUp = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     setIsLoading(true);
@@ -36,8 +36,6 @@ export const SignUpForm = () => {
         password
       });
 
-      console.log(data);
-
       const jwt = data.data.token;
       localStorage.setItem('jwt', jwt);
 
@@ -48,11 +46,11 @@ export const SignUpForm = () => {
         window.location.href = '/home';
       }, 3000);
     } catch (error) {
-      console.error(error);      
+      console.error(error);
       setIsLoading(false);
 
       const axiosError = error as AxiosError;
-      
+
       if (axiosError?.response?.status === 409)
         toast.error('Error! User already exists.');
       else toast.error('Error! Please try again.');
@@ -98,8 +96,14 @@ export const SignUpForm = () => {
           actions.setSubmitting(false);
         }}
       >
-        {({ handleChange }) => (
-          <Form className="flex flex-col w-fit" onSubmit={handleSubmit}>
+        {({ handleChange, handleSubmit }) => (
+          <Form
+            className="flex flex-col w-fit"
+            onSubmit={(event) => {
+              handleSubmit(event);
+              signUp(event);
+            }}
+          >
             <div className="flex flex-col md:flex-row ml-4 md:ml-0">
               <div className="flex flex-col md:mx-8">
                 <label htmlFor="email" className="md:my-0 underline">
