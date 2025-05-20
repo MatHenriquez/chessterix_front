@@ -1,0 +1,61 @@
+@import '../globals.css';
+@import url('https://fonts.googleapis.com/css2?family=Sofia-Sans&display=swap');
+
+.board-container-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.board-container-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+
+.board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 30px 10px 10px;
+  border-radius: 10px;
+  font-family: 'Sofia Sans', sans-serif;
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.glass-effect {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+@media (max-width: 768px) {
+  .board-container {
+    padding: 10px;
+    transform: scale(0.9);
+  }
+}
+
+@media (max-width: 480px) {
+  .board-container {
+    padding: 5px;
+    transform: scale(0.85);
+  }
+}
