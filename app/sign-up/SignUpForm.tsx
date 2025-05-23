@@ -4,7 +4,7 @@ import axiosInstance from '@/axios-config/axios-instance';
 import { BackEndLinks } from '@/axios-config/back-end-links';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import LoadingButton from '@/common-components/LoadingButton';
+import LoadingButton from '@/components/LoadingButton';
 import { AxiosError } from 'axios';
 
 interface SignUpFormValues {
