@@ -1,8 +1,7 @@
 import React from 'react';
-import SignInButton from '@/sign-in/SignInButton';
 import SignInModal from '@/sign-in/SignInModal';
-import SignUpButton from '@/sign-up/SignUpButton';
 import SignUpModal from '@/sign-up/SignUpModal';
+import AuthButton from '@/components/AuthButton';
 import './landing.css';
 
 const Landing = ({
@@ -35,15 +34,17 @@ const Landing = ({
         </div>
         <div className="flex flex-col w-80 md:w-96 gap-y-4 md:grid md:grid-cols-2 grid-rows-12 gap-x-6">
           <div className="col-span-1">
-            <SignInButton
-              showLoginModal={showLoginModal}
-              setShowLoginModal={setShowLoginModal}
+            <AuthButton
+              showAuthModal={showLoginModal}
+              setShowAuthModal={setShowLoginModal}
+              text="Sign In"
             />
           </div>
           <div className="col-span-1">
-            <SignUpButton
-              showSignUpModal={showSignUpModal}
-              setShowSignUpModal={setShowSignUpModal}
+            <AuthButton
+              showAuthModal={showSignUpModal}
+              setShowAuthModal={setShowSignUpModal}
+              text="Sign Up"
             />
           </div>
           <div className="col-span-2">
