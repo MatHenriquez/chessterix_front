@@ -16,14 +16,14 @@ describe('Landing Page', () => {
       cy.visit('/');
       cy.get('[data-cy=sign-in-button]')
         .should('exist')
-        .should('have.text', 'Sing In');
+        .should('have.text', 'Sign In');
     });
 
     it('should display the sign up button', () => {
       cy.visit('/');
       cy.get('[data-cy=sign-up-button]')
         .should('exist')
-        .should('have.text', 'Sing Up');
+        .should('have.text', 'Sign Up');
     });
 
     it('should display the guest link', () => {
