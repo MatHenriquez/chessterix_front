@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --tile-size: 100px;
+  --tile-size: 11vh;
   --light-tile: #a79e99;
   --dark-tile: #4d0705;
   --bg-color: #202020;

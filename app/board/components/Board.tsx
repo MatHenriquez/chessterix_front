@@ -1,8 +1,8 @@
 import React from 'react';
 import './board.css';
-import { getFileCharacters } from '../helpers/get-file-characters';
 import Ranks from './Ranks';
 import Files from './Files';
+import Pieces from './Pieces';
 
 const Board = () => {
   const ROWS_AND_COLUMNS_NUMBER = 8;
@@ -13,11 +13,11 @@ const Board = () => {
 
   const files = Array(ROWS_AND_COLUMNS_NUMBER)
     .fill(0)
-    .map((_, index: number) => getFileCharacters(index));
+    .map((_, index: number) => index + 1);
 
   const getClassName = (i: number, j: number) => {
     let className = 'tile';
-    className += (i + j) % 2 === 0 ? ' tile--light' : ' tile--dark';
+    className += (i + j) % 2 === 0 ? ' tile--dark' : ' tile--light';
     return className;
   };
 
@@ -28,11 +28,15 @@ const Board = () => {
         {ranks.map((rank, i) => (
           <div key={rank} className="rank">
             {files.map((file, j) => (
-              <div key={file + '-' + rank} className={getClassName(i, j)}></div>
+              <div
+                key={file + '-' + rank}
+                className={getClassName(9 - i, j)}
+              ></div>
             ))}
           </div>
         ))}
       </div>
+      <Pieces />
       <Files files={files} />
     </div>
   );
