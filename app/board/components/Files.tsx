@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 import './files.css';
+import { getFileCharacters } from '../helpers/get-file-characters';
 
 type FilesProps = {
-  files: string[];
+  files: number[];
 };
 
 const Files: FC<FilesProps> = ({ files }) => {
@@ -10,7 +11,7 @@ const Files: FC<FilesProps> = ({ files }) => {
     <div className="files">
       {files.map((file) => (
         <span key={file} className="file">
-          {file}
+          {getFileCharacters(file)}
         </span>
       ))}
     </div>
