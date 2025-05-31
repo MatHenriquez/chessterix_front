@@ -9,7 +9,6 @@ function reducer(state: State, action: Action): State {
       turn = turn === turns.WHITE ? turns.BLACK : turns.WHITE;
 
       position = [...position, ...action.payload.position];
-      console.log('New position:', position);
 
       return {
         ...state,
