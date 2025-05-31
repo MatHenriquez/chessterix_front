@@ -9,7 +9,7 @@ export const createInitialPosition = () => {
   return position;
 };
 
-export const copyPosition = (position: string[][]) => {
+export const copyPosition = (position: string[][]) : string[][] => {
   const newPosition = new Array(8).fill('').map(() => new Array(8).fill(''));
 
   for (let i = 0; i < 8; i++) {
