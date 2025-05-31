@@ -92,7 +92,6 @@ export const SignUpForm = () => {
         initialValues={initialValues}
         validate={validate}
         onSubmit={(values, actions) => {
-          console.log({ values, actions });
           actions.setSubmitting(false);
         }}
       >
