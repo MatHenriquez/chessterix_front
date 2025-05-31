@@ -1,15 +1,17 @@
 'use client';
 import './pieces.css';
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import Piece from './Piece';
-import { copyPosition, createInitialPosition } from '../helpers/position';
+import { copyPosition } from '../helpers/position';
+import { useAppContext } from '@/contexts/Context';
+import { makeNewMove } from '@/reducer/actions/move';
 
 const Pieces: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
 
-  const [currentPosition, setCurrentPosition] = useState<string[][]>(
-    createInitialPosition()
-  );
+  const { state, dispatch } = useAppContext();
+
+  const currentPosition = state.position[state.position.length - 1];
 
   const calculateCoordinates = (
     e: React.MouseEvent<HTMLDivElement>
@@ -32,7 +34,7 @@ const Pieces: FC = () => {
     const [rankIndex, fileIndex] = calculateCoordinates(e);
 
     const [piece, originalRankStr, originalFileStr] = e.dataTransfer
-      .getData('text/plain')
+      .getData('text')
       .split(',');
 
     const originalRank = Number(originalRankStr);
@@ -41,29 +43,29 @@ const Pieces: FC = () => {
     newPosition[originalRank][originalFile] = '';
     newPosition[rankIndex][fileIndex] = piece;
 
-    setCurrentPosition(newPosition);
+    dispatch(makeNewMove({ newPosition: [newPosition] }));
   };
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
   };
 
+  const renderRow = (row: string[], rank: number) => {
+    return row.map((piece, fileIndex) =>
+      piece ? (
+        <Piece
+          key={`${rank}-${fileIndex}`}
+          rank={rank}
+          fileIndex={fileIndex}
+          piece={piece}
+        />
+      ) : null
+    );
+  };
+
   return (
     <div className="pieces" ref={ref} onDrop={onDrop} onDragOver={onDragOver}>
-      {currentPosition.map((r, rank) =>
-        r.map((_, fileIndex) =>
-          currentPosition[rank][fileIndex] ? (
-            <Piece
-              key={`${rank}-${fileIndex}`}
-              rank={rank}
-              fileIndex={fileIndex}
-              piece={currentPosition[rank][fileIndex]}
-            />
-          ) : (
-            <></>
-          )
-        )
-      )}
+      {currentPosition.map((row, rank) => renderRow(row, rank))}
     </div>
   );
 };
