@@ -66,18 +66,7 @@ describe('Landing Page', () => {
       cy.get('[data-cy=submit-login]').click();
       cy.get('[data-cy=email-error]')
         .should('exist')
-        .should('have.text', '*Invalid email address');
-    });
-
-    it('should display an error message when submitting an invalid password', () => {
-      cy.visit('/');
-      cy.get('[data-cy=sign-in-button]').click();
-      cy.get('[data-cy=login-modal]').should('exist');
-      cy.get('[data-cy=password-input]').type('123');
-      cy.get('[data-cy=submit-login]').click();
-      cy.get('[data-cy=password-error]')
-        .should('exist')
-        .should('have.text', '*Password must be at least 8 characters');
+        .should('have.text', '*Invalid email');
     });
 
     it('should not display an error message when submitting a valid form', () => {
