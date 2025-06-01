@@ -6,6 +6,14 @@ const config: Config = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}'
   ],
+
+  safelist: [
+    {
+      pattern: /row-span-(2|4)/
+    },
+    'place-content-center'
+  ],
+
   theme: {
     extend: {
       colors: {
@@ -32,4 +40,5 @@ const config: Config = {
   },
   plugins: []
 };
+
 export default config;
