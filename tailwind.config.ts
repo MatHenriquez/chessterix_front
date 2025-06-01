@@ -9,7 +9,7 @@ const config: Config = {
 
   safelist: [
     {
-      pattern: /row-span-(2|4)/
+      pattern: /^(?:md:)?row-span-(2|4)$/
     },
     'place-content-center'
   ],
