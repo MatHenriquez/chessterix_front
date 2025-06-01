@@ -41,7 +41,7 @@ const Landing = ({
       <div
         className="
           flex flex-col items-center justify-center md:justify-between
-          w-full h-[95%] max-w-xl
+          w-full h-[90vh] md:h-[95%] max-w-xl
           text-center mx-auto
           shadow-inner shadow-bone-500/50
           bg-red-950/20 rounded-md
@@ -53,7 +53,7 @@ const Landing = ({
           <Message />
         </div>
 
-        <div className="w-4/5 md:w-96 mt-8">
+        <div className="w-4/5 md:w-96 mb-16 md:mb-0 md:mt-8">
           <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-6 items-center justify-center">
             <AuthButton
               showAuthModal={showLoginModal}
@@ -93,7 +93,7 @@ const Message = () => (
         WebkitTextStroke: '2px black',
         textShadow: '5px 5px 5px rgba(255, 0, 0, 0.3)',
         padding: '10px',
-        fontSize: '16rem'
+        fontSize: '15rem'
       }}
     >
       Chessterix
