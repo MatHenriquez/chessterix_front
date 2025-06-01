@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Formik, Form, ErrorMessage, Field } from 'formik';
+import { Formik, Form } from 'formik';
 import axiosInstance from '@/axios-config/axios-instance';
 import { BackEndLinks } from '@/axios-config/back-end-links';
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingButton from '@/components/LoadingButton';
 import { AxiosError } from 'axios';
+import FloatingLabelField from '@/components/FloatingLabelField';
 
 interface SignUpFormValues {
   email: string;
@@ -80,14 +81,8 @@ export const SignUpForm = () => {
 
     return errors;
   };
-
   return (
-    <div className="w-fit">
-      <h2 className="text-4xl mb-4 ml-4">Go ahead...</h2>
-      <span className="text-2xl mb-4 ml-4 pl-32">if you dare</span>
-      <div className="border-b-2 mt-2"></div>
-      <ToastContainer />
-      <br />
+    <div className="w-full">
       <Formik
         initialValues={initialValues}
         validate={validate}
@@ -95,92 +90,46 @@ export const SignUpForm = () => {
           actions.setSubmitting(false);
         }}
       >
-        {({ handleChange, handleSubmit }) => (
+        {({ handleSubmit }) => (
           <Form
-            className="flex flex-col w-fit"
+            className="space-y-6"
             onSubmit={(event) => {
               handleSubmit(event);
               signUp(event);
             }}
           >
-            <div className="flex flex-col md:flex-row ml-4 md:ml-0">
-              <div className="flex flex-col md:mx-8">
-                <label htmlFor="email" className="md:my-0 underline">
-                  Email
-                </label>
-                <Field
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="john.doe@mail.com"
-                  className="text-red-700 px-2 mt-2 border-2 border-red-800 focus:border-red-500 focus:border-3 focus: outline-none"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                    handleChange(e);
-                  }}
-                  data-cy="email-input"
-                />
-                <div style={{ width: '300px', minHeight: '50px' }}>
-                  <ErrorMessage
-                    name="email"
-                    component="div"
-                    data-cy="email-error"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex flex-col md:mx-8">
-                  <label htmlFor="password" className="md:my-0 underline">
-                    Password
-                  </label>
-                  <Field
-                    id="password"
-                    name="password"
-                    placeholder="********"
-                    type="password"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      handleChange(e);
-                    }}
-                    className="text-red-700 px-2 border-2 mt-2 border-red-800 focus:border-red-500 focus:border-3 focus: outline-none"
-                    data-cy="password-input"
-                  />
-                  <div style={{ width: '300px', minHeight: '50px' }}>
-                    <ErrorMessage
-                      name="password"
-                      component="div"
-                      data-cy="password-error"
-                    />
-                  </div>
-                </div>
-                <div className="flex flex-col md:mx-8">
-                  <label htmlFor="repeatPassword" className="md:my-0 underline">
-                    Repeat password
-                  </label>
-                  <Field
-                    id="repeatPassword"
-                    name="repeatPassword"
-                    placeholder="********"
-                    type="password"
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-                      handleChange(e);
-                    }}
-                    className="text-red-700 px-2 border-2 mt-2 border-red-800 focus:border-red-500 focus:border-3 focus: outline-none"
-                    data-cy="repeat-password-input"
-                  />
-                  <div style={{ width: '300px', minHeight: '50px' }}>
-                    <ErrorMessage
-                      name="repeatPassword"
-                      component="div"
-                      data-cy="repeat-password-error"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
+            <FloatingLabelField
+              name="email"
+              type="email"
+              label="Email"
+              id="email"
+              data-cy="email-input"
+              placeholder="john.doe@mail.com"
+            />
+
+            <FloatingLabelField
+              name="password"
+              type="password"
+              label="Password"
+              id="password"
+              data-cy="password-input"
+              placeholder="••••••••"
+            />
+
+            <FloatingLabelField
+              name="repeatPassword"
+              type="password"
+              label="Repeat Password"
+              id="repeatPassword"
+              data-cy="repeat-password-input"
+              placeholder="••••••••"
+            />
+
             <div className="flex w-full justify-center">
               {!isLoading ? (
                 <button
                   type="submit"
-                  className="border-2 bg-kimono-200/80 shadow-lg shadow-bone-500 border-white rounded px-8 py-2 mt-8 hover:shadow-white hover:bg-red-400"
+                  className="w-full py-3 bg-red-main text-white font-semibold rounded-md hover:bg-kimono-200 transition-colors duration-300 shadow-md"
                   data-cy="submit-sign-up"
                 >
                   Register
