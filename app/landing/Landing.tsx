@@ -41,7 +41,7 @@ const Landing = ({
       <div
         className="
           flex flex-col items-center justify-center md:justify-between
-          w-full h-full max-w-xl
+          w-full h-[95%] max-w-xl
           text-center mx-auto
           shadow-inner shadow-bone-500/50
           bg-red-950/20 rounded-md
