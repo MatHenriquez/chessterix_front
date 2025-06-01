@@ -30,20 +30,31 @@ const Landing = ({
     </div>
 
     <section
-      className="landing-wrapper bg-[url(/image/anime-background.jpg)] bg-cover bg-center bg-no-repeat h-screen flex flex-col items-center justify-center"
+      className="
+        landing-wrapper
+        bg-[url(/image/anime-background.jpg)] bg-cover bg-center bg-no-repeat
+        h-screen w-screen overflow-hidden
+        flex flex-col items-center justify-center
+      "
       data-cy="landing-container"
     >
       <div
-        className="flex flex-col items-center justify-center md:justify-between max-w-xl text-center mx-auto shadow-inner shadow-bone-500/50 bg-red-950/20 rounded-md h-[80vh] p-4"
+        className="
+          flex flex-col items-center justify-center md:justify-between
+          w-full h-[95%] max-w-xl
+          text-center mx-auto
+          shadow-inner shadow-bone-500/50
+          bg-red-950/20 rounded-md
+          p-4
+        "
         data-cy="landing-content"
       >
-
         <div className="flex-1 flex items-center justify-center">
           <Message />
         </div>
 
-        <div className="w-80 md:w-96 mt-8">
-          <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-6">
+        <div className="w-4/5 md:w-96 mt-8">
+          <div className="flex flex-col md:flex-row gap-y-4 md:gap-x-6 items-center justify-center">
             <AuthButton
               showAuthModal={showLoginModal}
               setShowAuthModal={setShowLoginModal}
@@ -82,7 +93,7 @@ const Message = () => (
         WebkitTextStroke: '2px black',
         textShadow: '5px 5px 5px rgba(255, 0, 0, 0.3)',
         padding: '10px',
-        fontSize: '14rem'
+        fontSize: '16rem'
       }}
     >
       Chessterix
