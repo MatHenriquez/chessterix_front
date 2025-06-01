@@ -21,36 +21,31 @@ const Landing = ({
         setShowSignUpModal={setShowSignUpModal}
       />
     </div>
+
     <section
-      className="landing-wrapper bg-[url(/image/anime-background.jpg)] bg-cover bg-center bg-no-repeat h-screen flex flex-col place-items-center justify-center"
+      className="landing-wrapper bg-[url(/image/anime-background.jpg)] bg-cover bg-center bg-no-repeat h-screen flex flex-col items-center justify-center"
       data-cy="landing-container"
     >
       <div
-        className="grid grid-rows-12 justify-items-center max-w-xl text-center mx-auto shadow-inner shadow-bone-500/50 bg-red-950/20 rounded-md h-[80vh] gap-y-4 p-4"
+        className="flex flex-col justify-between items-center max-w-xl text-center mx-auto shadow-inner shadow-bone-500/50 bg-red-950/20 rounded-md h-[80vh] p-4"
         data-cy="landing-content"
       >
-        <div className="row-span-6 flex items-center justify-center">
+        <div className="flex-1 flex items-center justify-center">
           <Message />
         </div>
 
-        <div className="row-span-6 flex flex-col w-80 md:w-96 gap-y-4 md:grid md:grid-cols-2 gap-x-6 mt-auto">
-          <div className="col-span-1">
-            <AuthButton
-              showAuthModal={showLoginModal}
-              setShowAuthModal={setShowLoginModal}
-              text="Sign In"
-            />
-          </div>
-          <div className="col-span-1">
-            <AuthButton
-              showAuthModal={showSignUpModal}
-              setShowAuthModal={setShowSignUpModal}
-              text="Sign Up"
-            />
-          </div>
-          <div className="col-span-2 mt-4">
-            <GuestLink />
-          </div>
+        <div className="w-80 md:w-96 flex flex-col md:flex-row gap-y-4 md:gap-x-6 mt-8">
+          <AuthButton
+            showAuthModal={showLoginModal}
+            setShowAuthModal={setShowLoginModal}
+            text="Sign In"
+          />
+          <AuthButton
+            showAuthModal={showSignUpModal}
+            setShowAuthModal={setShowSignUpModal}
+            text="Sign Up"
+          />
+          <GuestLink />
         </div>
       </div>
     </section>
