@@ -1,3 +1,6 @@
+import arbiter from '@/arbiter/arbiter';
+import { useAppContext } from '@/contexts/Context';
+import { generateCandidateMoves } from '@/reducer/actions/move';
 import React, { FC, DragEvent } from 'react';
 
 type PieceProps = {
@@ -7,13 +10,28 @@ type PieceProps = {
 };
 
 const Piece: FC<PieceProps> = ({ piece, fileIndex, rank }) => {
-  const onDragStart = (e: DragEvent) => {
-    e.dataTransfer.effectAllowed = 'move';
-    e.dataTransfer.setData('text/plain', `${piece},${rank},${fileIndex}`);
-    setTimeout(() => {
-      (e.target as HTMLDivElement).style.display = 'none';
-    }, 0);
-  };
+  const { state, dispatch } = useAppContext();
+  const { turn, position } = state;
+  const currentPosition = position[position.length - 1];
+
+const onDragStart = (e: DragEvent) => {
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/plain', `${piece},${rank},${fileIndex}`);
+  setTimeout(() => {
+    (e.target as HTMLDivElement).style.display = 'none';
+  }, 0);
+
+  if (turn.startsWith(piece[0])) {  
+    const candidateMoves = arbiter.getRegularMoves(
+      rank,
+      fileIndex,
+      currentPosition,
+      piece
+    );
+
+    dispatch(generateCandidateMoves(candidateMoves));
+  }
+};
 
   const onDragEnd = (e: DragEvent) => {
     (e.target as HTMLDivElement).style.display = 'block';
