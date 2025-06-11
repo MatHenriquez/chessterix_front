@@ -1,11 +1,17 @@
+'use client';
+
 import React from 'react';
 import './board.css';
 import Ranks from './Ranks';
 import Files from './Files';
 import Pieces from './Pieces';
+import { useAppContext } from '@/contexts/Context';
 
 const Board = () => {
   const ROWS_AND_COLUMNS_NUMBER = 8;
+
+  const { state } = useAppContext();
+  const position = state.position[state.position.length - 1];
 
   const ranks = Array(ROWS_AND_COLUMNS_NUMBER)
     .fill(0)
@@ -15,9 +21,18 @@ const Board = () => {
     .fill(0)
     .map((_, index: number) => index + 1);
 
-  const getClassName = (i: number, j: number) => {
+  const getClassName = (rank: number, file: number) => {
     let className = 'tile';
-    className += (i + j) % 2 === 0 ? ' tile--dark' : ' tile--light';
+    className += (rank + file) % 2 === 0 ? ' tile--dark' : ' tile--light';
+
+    if (state.candidateMoves?.find((m) => m[0] === rank && m[1] === file)) {
+      if (position[rank]?.[file]) {
+        className += ' attacking';
+      } else {
+        className += ' highlight';
+      }
+    }
+
     return className;
   };
 
@@ -25,14 +40,19 @@ const Board = () => {
     <div className="board">
       <Ranks ranks={ranks} />
       <div className="tiles">
-        {ranks.map((rank, i) => (
-          <div key={rank} className="rank">
-            {files.map((file, j) => (
-              <div
-                key={file + '-' + rank}
-                className={getClassName(9 - i, j)}
-              ></div>
-            ))}
+        {Array.from({ length: 8 }, (_, i) => (
+          <div key={i} className="rank">
+            {Array.from({ length: 8 }, (_, j) => {
+              const boardRank = 7 - i;
+              const boardFile = j;
+
+              return (
+                <div
+                  key={`${i}-${j}`}
+                  className={getClassName(boardRank, boardFile)}
+                ></div>
+              );
+            })}
           </div>
         ))}
       </div>
