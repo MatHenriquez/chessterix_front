@@ -62,8 +62,9 @@
   width: calc(var(--tile-size) - 12px);
   height: calc(var(--tile-size) - 12px);
   border-radius: 50%;
-  left: 0;
-  top: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .checked:after {

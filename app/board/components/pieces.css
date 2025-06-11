@@ -1,15 +1,17 @@
 .pieces {
   position: absolute;
-  left: calc(0.25 * var(--tile-size));
-  right: 0;
+  left: calc(0.25 * var(--tile-size) + 5px);
   top: 0;
-  bottom: calc(0.25 * var(--tile-size));
+  width: calc(8 * var(--tile-size));
+  height: calc(8 * var(--tile-size));
 }
 
 .piece {
-  width: 12.5%;
-  height: 12.5%;
-  background-size: 100%;
+  width: var(--tile-size);
+  height: var(--tile-size);
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
   position: absolute;
 }
 
@@ -51,201 +53,201 @@
 }
 
 .piece.p-07 {
-  transform: translate(0%, 0%);
+  transform: translate(0, 0);
 }
 .piece.p-17 {
-  transform: translate(100%, 0%);
+  transform: translate(var(--tile-size), 0);
 }
 .piece.p-27 {
-  transform: translate(200%, 0%);
+  transform: translate(calc(2 * var(--tile-size)), 0);
 }
 .piece.p-37 {
-  transform: translate(300%, 0%);
+  transform: translate(calc(3 * var(--tile-size)), 0);
 }
 .piece.p-47 {
-  transform: translate(400%, 0%);
+  transform: translate(calc(4 * var(--tile-size)), 0);
 }
 .piece.p-57 {
-  transform: translate(500%, 0%);
+  transform: translate(calc(5 * var(--tile-size)), 0);
 }
 .piece.p-67 {
-  transform: translate(600%, 0%);
+  transform: translate(calc(6 * var(--tile-size)), 0);
 }
 .piece.p-77 {
-  transform: translate(700%, 0%);
+  transform: translate(calc(7 * var(--tile-size)), 0);
 }
 
 .piece.p-06 {
-  transform: translate(0%, 100%);
+  transform: translate(0, var(--tile-size));
 }
 .piece.p-16 {
-  transform: translate(100%, 100%);
+  transform: translate(var(--tile-size), var(--tile-size));
 }
 .piece.p-26 {
-  transform: translate(200%, 100%);
+  transform: translate(calc(2 * var(--tile-size)), var(--tile-size));
 }
 .piece.p-36 {
-  transform: translate(300%, 100%);
+  transform: translate(calc(3 * var(--tile-size)), var(--tile-size));
 }
 .piece.p-46 {
-  transform: translate(400%, 100%);
+  transform: translate(calc(4 * var(--tile-size)), var(--tile-size));
 }
 .piece.p-56 {
-  transform: translate(500%, 100%);
+  transform: translate(calc(5 * var(--tile-size)), var(--tile-size));
 }
 .piece.p-66 {
-  transform: translate(600%, 100%);
+  transform: translate(calc(6 * var(--tile-size)), var(--tile-size));
 }
 .piece.p-76 {
-  transform: translate(700%, 100%);
+  transform: translate(calc(7 * var(--tile-size)), var(--tile-size));
 }
 
 .piece.p-05 {
-  transform: translate(0%, 200%);
+  transform: translate(0, calc(2 * var(--tile-size)));
 }
 .piece.p-15 {
-  transform: translate(100%, 200%);
+  transform: translate(var(--tile-size), calc(2 * var(--tile-size)));
 }
 .piece.p-25 {
-  transform: translate(200%, 200%);
+  transform: translate(calc(2 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 .piece.p-35 {
-  transform: translate(300%, 200%);
+  transform: translate(calc(3 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 .piece.p-45 {
-  transform: translate(400%, 200%);
+  transform: translate(calc(4 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 .piece.p-55 {
-  transform: translate(500%, 200%);
+  transform: translate(calc(5 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 .piece.p-65 {
-  transform: translate(600%, 200%);
+  transform: translate(calc(6 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 .piece.p-75 {
-  transform: translate(700%, 200%);
+  transform: translate(calc(7 * var(--tile-size)), calc(2 * var(--tile-size)));
 }
 
 .piece.p-04 {
-  transform: translate(0%, 300%);
+  transform: translate(0, calc(3 * var(--tile-size)));
 }
 .piece.p-14 {
-  transform: translate(100%, 300%);
+  transform: translate(var(--tile-size), calc(3 * var(--tile-size)));
 }
 .piece.p-24 {
-  transform: translate(200%, 300%);
+  transform: translate(calc(2 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 .piece.p-34 {
-  transform: translate(300%, 300%);
+  transform: translate(calc(3 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 .piece.p-44 {
-  transform: translate(400%, 300%);
+  transform: translate(calc(4 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 .piece.p-54 {
-  transform: translate(500%, 300%);
+  transform: translate(calc(5 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 .piece.p-64 {
-  transform: translate(600%, 300%);
+  transform: translate(calc(6 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 .piece.p-74 {
-  transform: translate(700%, 300%);
+  transform: translate(calc(7 * var(--tile-size)), calc(3 * var(--tile-size)));
 }
 
 .piece.p-03 {
-  transform: translate(0%, 400%);
+  transform: translate(0, calc(4 * var(--tile-size)));
 }
 .piece.p-13 {
-  transform: translate(100%, 400%);
+  transform: translate(var(--tile-size), calc(4 * var(--tile-size)));
 }
 .piece.p-23 {
-  transform: translate(200%, 400%);
+  transform: translate(calc(2 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 .piece.p-33 {
-  transform: translate(300%, 400%);
+  transform: translate(calc(3 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 .piece.p-43 {
-  transform: translate(400%, 400%);
+  transform: translate(calc(4 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 .piece.p-53 {
-  transform: translate(500%, 400%);
+  transform: translate(calc(5 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 .piece.p-63 {
-  transform: translate(600%, 400%);
+  transform: translate(calc(6 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 .piece.p-73 {
-  transform: translate(700%, 400%);
+  transform: translate(calc(7 * var(--tile-size)), calc(4 * var(--tile-size)));
 }
 
 .piece.p-02 {
-  transform: translate(0%, 500%);
+  transform: translate(0, calc(5 * var(--tile-size)));
 }
 .piece.p-12 {
-  transform: translate(100%, 500%);
+  transform: translate(var(--tile-size), calc(5 * var(--tile-size)));
 }
 .piece.p-22 {
-  transform: translate(200%, 500%);
+  transform: translate(calc(2 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 .piece.p-32 {
-  transform: translate(300%, 500%);
+  transform: translate(calc(3 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 .piece.p-42 {
-  transform: translate(400%, 500%);
+  transform: translate(calc(4 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 .piece.p-52 {
-  transform: translate(500%, 500%);
+  transform: translate(calc(5 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 .piece.p-62 {
-  transform: translate(600%, 500%);
+  transform: translate(calc(6 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 .piece.p-72 {
-  transform: translate(700%, 500%);
+  transform: translate(calc(7 * var(--tile-size)), calc(5 * var(--tile-size)));
 }
 
 .piece.p-01 {
-  transform: translate(0%, 600%);
+  transform: translate(0, calc(6 * var(--tile-size)));
 }
 .piece.p-11 {
-  transform: translate(100%, 600%);
+  transform: translate(var(--tile-size), calc(6 * var(--tile-size)));
 }
 .piece.p-21 {
-  transform: translate(200%, 600%);
+  transform: translate(calc(2 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 .piece.p-31 {
-  transform: translate(300%, 600%);
+  transform: translate(calc(3 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 .piece.p-41 {
-  transform: translate(400%, 600%);
+  transform: translate(calc(4 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 .piece.p-51 {
-  transform: translate(500%, 600%);
+  transform: translate(calc(5 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 .piece.p-61 {
-  transform: translate(600%, 600%);
+  transform: translate(calc(6 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 .piece.p-71 {
-  transform: translate(700%, 600%);
+  transform: translate(calc(7 * var(--tile-size)), calc(6 * var(--tile-size)));
 }
 
 .piece.p-00 {
-  transform: translate(0%, 700%);
+  transform: translate(0, calc(7 * var(--tile-size)));
 }
 .piece.p-10 {
-  transform: translate(100%, 700%);
+  transform: translate(var(--tile-size), calc(7 * var(--tile-size)));
 }
 .piece.p-20 {
-  transform: translate(200%, 700%);
+  transform: translate(calc(2 * var(--tile-size)), calc(7 * var(--tile-size)));
 }
 .piece.p-30 {
-  transform: translate(300%, 700%);
+  transform: translate(calc(3 * var(--tile-size)), calc(7 * var(--tile-size)));
 }
 .piece.p-40 {
-  transform: translate(400%, 700%);
+  transform: translate(calc(4 * var(--tile-size)), calc(7 * var(--tile-size)));
 }
 .piece.p-50 {
-  transform: translate(500%, 700%);
+  transform: translate(calc(5 * var(--tile-size)), calc(7 * var(--tile-size)));
 }
 .piece.p-60 {
-  transform: translate(600%, 700%);
+  transform: translate(calc(6 * var(--tile-size)), calc(7 * var(--tile-size)));
 }
 .piece.p-70 {
-  transform: translate(700%, 700%);
+  transform: translate(calc(7 * var(--tile-size)), calc(7 * var(--tile-size)));
 }

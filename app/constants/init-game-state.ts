@@ -3,5 +3,6 @@ import { turns } from './turns';
 
 export const initGameState = {
   position: [createInitialPosition()],
-  turn: turns.WHITE
+  turn: turns.WHITE,
+  candidateMoves: [] as number[][]
 };

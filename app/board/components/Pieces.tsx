@@ -4,7 +4,7 @@ import React, { FC, useRef } from 'react';
 import Piece from './Piece';
 import { copyPosition } from '../helpers/position';
 import { useAppContext } from '@/contexts/Context';
-import { makeNewMove } from '@/reducer/actions/move';
+import { clearCandidateMoves, makeNewMove } from '@/reducer/actions/move';
 
 const Pieces: FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -40,10 +40,18 @@ const Pieces: FC = () => {
     const originalRank = Number(originalRankStr);
     const originalFile = Number(originalFileStr);
 
-    newPosition[originalRank][originalFile] = '';
-    newPosition[rankIndex][fileIndex] = piece;
+    const isValidMove = state.candidateMoves?.find(
+      (m) => m[0] === rankIndex && m[1] === fileIndex
+    );
 
-    dispatch(makeNewMove({ newPosition: [newPosition] }));
+    if (isValidMove) {
+      newPosition[originalRank][originalFile] = '';
+      newPosition[rankIndex][fileIndex] = piece;
+
+      dispatch(makeNewMove({ newPosition: [newPosition] }));
+    }
+
+    dispatch(clearCandidateMoves());
   };
 
   const onDragOver = (e: React.DragEvent<HTMLDivElement>) => {
