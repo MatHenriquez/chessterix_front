@@ -1,5 +1,5 @@
 'use client';
-import './pieces.css';
+import '../styles/pieces.css';
 import React, { FC, useRef } from 'react';
 import Piece from './Piece';
 import { copyPosition } from '../helpers/position';

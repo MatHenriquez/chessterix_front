@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import './board.css';
+import '../styles/board.css';
 import Ranks from './Ranks';
 import Files from './Files';
 import Pieces from './Pieces';

@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './files.css';
+import '../styles/files.css';
 import { getFileCharacters } from '../helpers/get-file-characters';
 
 type FilesProps = {

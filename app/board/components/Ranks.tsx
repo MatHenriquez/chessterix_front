@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import './ranks.css';
+import '../styles/ranks.css';
 
 type RanksProps = {
   ranks: number[];
