@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Formik, Form } from 'formik';
-import axiosInstance from '@/axios-config/axios-instance';
-import { BackEndLinks } from '@/axios-config/back-end-links';
+import axiosInstance from '@/utils/axios-config/axios-instance';
+import { BackEndLinks } from '@/constants/back-end-links';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import LoadingButton from '@/components/LoadingButton';
