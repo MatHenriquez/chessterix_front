@@ -1,4 +1,9 @@
-import { Action, State } from '@/contexts/Context';
+import {
+  Action,
+  CandidateMovesAction,
+  MoveAction,
+  State
+} from '@/contexts/Context';
 import actionTypes from './actionTypes';
 import { turns } from '@/constants/turns';
 
@@ -8,7 +13,7 @@ function reducer(state: State, action: Action): State {
       let { turn, position } = state;
       turn = turn === turns.WHITE ? turns.BLACK : turns.WHITE;
 
-      position = [...position, ...action.payload.position];
+      position = (action.payload as MoveAction).position;
 
       return {
         ...state,
@@ -16,6 +21,22 @@ function reducer(state: State, action: Action): State {
         turn
       };
     }
+
+    case actionTypes.GENERATE_CANDIDATE_MOVES: {
+      const { candidateMoves } = action.payload as CandidateMovesAction;
+      return {
+        ...state,
+        candidateMoves
+      };
+    }
+
+    case actionTypes.CLEAR_CANDIDATE_MOVES: {
+      return {
+        ...state,
+        candidateMoves: []
+      };
+    }
+
     default:
       return state;
   }
