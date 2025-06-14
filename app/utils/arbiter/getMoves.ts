@@ -125,3 +125,13 @@ export const getBishopMoves = (
 
   return moves;
 };
+
+export const getQueenMoves = (
+  rank: number,
+  fileIndex: number,
+  currentPosition: string[][],
+  piece: string
+) => [
+  ...getRookMoves(rank, fileIndex, currentPosition, piece),
+  ...getBishopMoves(rank, fileIndex, currentPosition, piece)
+];
