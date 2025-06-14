@@ -42,8 +42,8 @@
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(135, 31, 31, 0.18);
+  box-shadow: 0 8px 64px 0 rgba(135, 31, 31, 0.75);
 }
 
 @media (max-width: 768px) {

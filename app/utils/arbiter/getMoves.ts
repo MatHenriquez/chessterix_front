@@ -42,3 +42,41 @@ export const getRookMoves = (
 
   return moves;
 };
+
+export const getKnightMoves = (
+  rank: number,
+  fileIndex: number,
+  currentPosition: string[][]
+) => {
+  const moves: [number, number][] = [];
+  const currentPlayer = currentPosition[rank][fileIndex][0];
+  const opponent = currentPlayer === 'w' ? 'b' : 'w';
+
+  const candidates = [
+    [-2, -1],
+    [-2, 1],
+    [-1, -2],
+    [-1, 2],
+    [1, -2],
+    [1, 2],
+    [2, -1],
+    [2, 1]
+  ];
+
+  candidates.forEach((candidate) => {
+    const newRank = rank + candidate[0];
+    const newFile = fileIndex + candidate[1];
+
+    if (newRank < 0 || newRank > 7 || newFile < 0 || newFile > 7) {
+      return;
+    }
+
+    const cell = currentPosition[newRank][newFile];
+
+    if (cell === '' || cell.startsWith(opponent)) {
+      moves.push([newRank, newFile]);
+    }
+  });
+
+  return moves;
+};
