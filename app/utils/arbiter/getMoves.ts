@@ -126,6 +126,44 @@ export const getBishopMoves = (
   return moves;
 };
 
+export const getKingMoves = (
+  rank: number,
+  fileIndex: number,
+  currentPosition: string[][],
+  piece: string
+) => {
+  const moves: [number, number][] = [];
+  const currentPlayer = piece[0];
+
+  const kingsDirections = [
+    [1, 0],
+    [-1, 0],
+    [0, 1],
+    [0, -1],
+    [1, 1],
+    [1, -1],
+    [-1, 1],
+    [-1, -1]
+  ];
+
+  kingsDirections.forEach((direction) => {
+    const x = rank + direction[0];
+    const y = fileIndex + direction[1];
+
+    const isOutOfBoard = currentPosition?.[x]?.[y] === undefined;
+    if (isOutOfBoard) {
+      return;
+    }
+
+    const isOccupied = currentPosition[x][y].startsWith(currentPlayer);
+    if (!isOccupied) {
+      moves.push([x, y]);
+    }
+  });
+
+  return moves;
+};
+
 export const getQueenMoves = (
   rank: number,
   fileIndex: number,
