@@ -13,12 +13,13 @@ function reducer(state: State, action: Action): State {
       let { turn, position } = state;
       turn = turn === turns.WHITE ? turns.BLACK : turns.WHITE;
 
-      position = (action.payload as MoveAction).position;
+      position = [...position, ...(action.payload as MoveAction).position];
 
       return {
         ...state,
         position,
-        turn
+        turn,
+        candidateMoves: []
       };
     }
 
