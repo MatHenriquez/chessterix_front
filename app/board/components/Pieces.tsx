@@ -45,6 +45,16 @@ const Pieces: FC = () => {
     );
 
     if (isValidMove) {
+      const wasEnPassantCapture =
+        piece.endsWith('p') &&
+        Math.abs(fileIndex - originalFile) === 1 &&
+        Math.abs(rankIndex - originalRank) === 1 &&
+        !newPosition[rankIndex][fileIndex];
+
+      if (wasEnPassantCapture) {
+        newPosition[originalRank][fileIndex] = '';
+      }
+
       newPosition[originalRank][originalFile] = '';
       newPosition[rankIndex][fileIndex] = piece;
 

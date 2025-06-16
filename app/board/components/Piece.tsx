@@ -13,7 +13,9 @@ type PieceProps = {
 const Piece: FC<PieceProps> = ({ piece, fileIndex, rank }) => {
   const { state, dispatch } = useAppContext();
   const { turn, position } = state;
+
   const currentPosition = position[position.length - 1];
+  const previousPosition = position[position.length - 2];
 
   const onDragStart = (e: DragEvent) => {
     e.dataTransfer.effectAllowed = 'move';
@@ -27,7 +29,8 @@ const Piece: FC<PieceProps> = ({ piece, fileIndex, rank }) => {
         rank,
         fileIndex,
         currentPosition,
-        piece
+        piece,
+        previousPosition
       );
 
       dispatch(generateCandidateMoves(candidateMoves));
