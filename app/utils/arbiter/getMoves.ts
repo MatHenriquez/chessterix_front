@@ -173,3 +173,86 @@ export const getQueenMoves = (
   ...getRookMoves(rank, fileIndex, currentPosition, piece),
   ...getBishopMoves(rank, fileIndex, currentPosition, piece)
 ];
+
+export const getPawnMoves = (
+  rank: number,
+  fileIndex: number,
+  currentPosition: string[][],
+  piece: string
+) => {
+  const moves: [number, number][] = [];
+  const direction = piece === 'wp' ? 1 : -1;
+
+  const oneStepForward = rank + direction;
+
+  if (oneStepForward >= 0 && oneStepForward <= 7) {
+    if (currentPosition[oneStepForward][fileIndex] === '') {
+      moves.push([oneStepForward, fileIndex]);
+
+      const isStartingPosition =
+        (piece === 'wp' && rank === 1) || (piece === 'bp' && rank === 6);
+      const twoStepsForward = rank + direction * 2;
+
+      if (isStartingPosition && twoStepsForward >= 0 && twoStepsForward <= 7) {
+        if (currentPosition[twoStepsForward][fileIndex] === '') {
+          moves.push([twoStepsForward, fileIndex]);
+        }
+      }
+    }
+  }
+
+  return moves;
+};
+
+export const getPawnCaptures = (
+  rank: number,
+  fileIndex: number,
+  currentPosition: string[][],
+  piece: string,
+  previousPosition: string[][]
+) => {
+  const moves: [number, number][] = [];
+  const direction = piece === 'wp' ? 1 : -1;
+  const enemy = piece.startsWith('w') ? 'b' : 'w';
+
+  const diagonalFiles = [fileIndex - 1, fileIndex + 1];
+  diagonalFiles.forEach((file) => {
+    if (file >= 0 && file <= 7) {
+      const targetRank = rank + direction;
+      if (targetRank >= 0 && targetRank <= 7) {
+        const targetPiece = currentPosition[targetRank]?.[file];
+        if (targetPiece?.startsWith(enemy)) {
+          moves.push([targetRank, file]);
+        }
+      }
+    }
+  });
+
+  if (previousPosition) {
+    const enPassantRank = piece === 'wp' ? 4 : 3;
+
+    if (rank === enPassantRank) {
+      diagonalFiles.forEach((file) => {
+        if (file >= 0 && file <= 7) {
+          const enemyPawn = enemy + 'p';
+          const currentEnemyPiece = currentPosition[rank]?.[file];
+          const previousEnemyPosition = previousPosition[rank]?.[file];
+
+          const enemyStartRank = enemy === 'w' ? 1 : 6;
+          const previousEnemyStartPosition =
+            previousPosition[enemyStartRank]?.[file];
+
+          const condition1 = currentEnemyPiece === enemyPawn;
+          const condition2 = previousEnemyPosition === '';
+          const condition3 = previousEnemyStartPosition === enemyPawn;
+
+          if (condition1 && condition2 && condition3) {
+            moves.push([rank + direction, file]);
+          }
+        }
+      });
+    }
+  }
+
+  return moves;
+};
